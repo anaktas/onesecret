@@ -7,3 +7,4 @@ up:
 clean:
 	docker compose down
 	docker rmi onesecret-onesecret-frontend
+	docker rmi onesecret-onesecret-backend

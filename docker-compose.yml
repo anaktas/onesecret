@@ -8,3 +8,10 @@ services:
       PORT: 3000
       NEXT_PUBLIC_BE_URL: "http://localhost:8080"
       NEXT_PUBLIC_FE_DECRYPT_URL: "http://localhost:3000/secret/"
+  onesecret-backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    environment:
+      API_PORT: 8080
