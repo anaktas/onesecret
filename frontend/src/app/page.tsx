@@ -29,8 +29,10 @@ export default function Home() {
         alert('An error occurred, please try again later.');
         return;
       }
-      // TODO: This need to be an environment variable.
-      setUrl('http://localhost:3000/secret/' + r.data.slug);
+
+      let frontentUrl: string =
+        process.env.NEXT_PUBLIC_FE_DECRYPT_URL || 'http://localhost:3000/secret/';
+      setUrl(frontentUrl + r.data.slug);
     });
   }
 
