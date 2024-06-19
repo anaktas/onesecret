@@ -5,7 +5,7 @@ import axios, {
 } from 'axios';
 
 const client = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BE_URL || 'http://localhost:8080'
+  baseURL: process.env.NEXT_PUBLIC_BE_URL || ''
 });
 
 export function sendSecret(secret: string): Promise<AxiosResponse> {

@@ -1,6 +1,7 @@
 all: up
 
 up:
+	cp .env.local frontend/.env.local
 	docker compose build
 	docker compose up -d
 

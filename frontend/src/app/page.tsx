@@ -30,8 +30,7 @@ export default function Home() {
         return;
       }
 
-      let frontentUrl: string =
-        process.env.NEXT_PUBLIC_FE_DECRYPT_URL || 'http://localhost:3000/secret/';
+      let frontentUrl: string = process.env.NEXT_PUBLIC_FE_URL || '';
       setUrl(frontentUrl + r.data.slug);
     });
   }
