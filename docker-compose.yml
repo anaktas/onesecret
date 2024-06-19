@@ -1,0 +1,21 @@
+services:
+  onesecret-frontend:
+    build: ./frontend
+    ports:
+      - "5656:5656"
+    restart: unless-stopped
+    environment:
+      PORT: 5656
+      BE_URL: "http://localhost:9090"
+      FE_URL: "http://localhost:5656/secret/"
+  onesecret-backend:
+    build: ./backend
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+    environment:
+      API_PORT: 9090
+      H2_URL: "jdbc:h2:mem:onesecretdb"
+      H2_USER: "one"
+      H2_PASS: "secret"
+      H2_SCHEMA: "onesecretdb"

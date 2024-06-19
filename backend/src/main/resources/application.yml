@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: 'onesecret'
+  banner:
+    location: classpath:banner.txt
+  datasource:
+    url: "${H2_URL:jdbc:h2:mem:onesecretdb}"
+    username: "${H2_USER:one}"
+    password: "${H2_PASS:secret}"
+    driverClassName: org.h2.Driver
+    jpa:
+      database-platform: org.hibernate.dialect.H2Dialect
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 100
+      idle-timeout: 60000
+      pool-name: "onesecret-db-connection-pool"
+      auto-commit: false
+  h2:
+    console:
+      enabled: true
+      path: /db-console
+      settings.trace: false
+      settings.web-allow-others: false
+  flyway:
+    enabled: true
+    user: "${H2_USER:one}"
+    password: "${H2_PASS:secret}"
+    schemas: "${H2_SCHEMA:onesecretdb}"
+    url: "${H2_URL:jdbc:h2:mem:onesecretdb}"
+    locations: filesystem:db/migration
+server:
+  port: ${API_PORT:8080}
